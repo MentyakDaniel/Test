@@ -1,0 +1,36 @@
+<!-- app.component.html -->
+<div class="container text-center">
+
+  <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Code Column -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Code </th>
+      <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" class="action-link"> 
+        <a href="#" (click)="openDialog('Update',element)">Edit</a> | 
+        <a href="#" (click)="openDialog('Delete',element)">Delete</a>  
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <button mat-button (click)="openDialog('Add', null)" style="margin-top: 1%;margin-left: auto;margin-right: auto;display: block; width: 80%;" mat-flat-button color="primary">Add Operator</button>
+
+</div>
